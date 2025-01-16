@@ -5,19 +5,19 @@
 
 #include "bitset.hpp"
 
-class BitArray : public Bitset{
+class BitArray : public Bitset
+{
 public:
-
   BitArray();
 
   BitArray(intmax_t size);
 
-  BitArray(const std::string & value);
+  BitArray(const std::string &value);
 
   ~BitArray();
 
-  BitArray(const BitArray & ) = delete;
-  BitArray & operator=(const BitArray &) = delete;
+  BitArray(const BitArray &) = delete;
+  BitArray &operator=(const BitArray &) = delete;
 
   intmax_t size() const;
 
@@ -34,7 +34,6 @@ public:
   std::string asString() const;
 
 private:
-
   // TODO
 };
 
