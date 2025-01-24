@@ -77,6 +77,18 @@ bool ArrayBag<ItemType>::contains(const ItemType &anEntry) const
 } // end contains
 
 template <typename ItemType>
+bool ArrayBag<ItemType>::replace(const ItemType &oldEntry, const ItemType &newEntry)
+{
+   int index = getIndexOf(oldEntry);
+   if (index == -1)
+   {
+      return false;
+   }
+   items[index] = newEntry;
+   return true;
+}
+
+template <typename ItemType>
 std::vector<ItemType> ArrayBag<ItemType>::toVector() const
 {
    std::vector<ItemType> bagContents;

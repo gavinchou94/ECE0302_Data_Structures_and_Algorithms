@@ -28,6 +28,7 @@ public:
 	void clear();
 	bool contains(const ItemType &anEntry) const;
 	int getFrequencyOf(const ItemType &anEntry) const;
+	bool replace(const ItemType &oldEntry, const ItemType &newEntry);
 	std::vector<ItemType> toVector() const;
 }; // end ArrayBag
 

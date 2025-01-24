@@ -132,6 +132,23 @@ TEST_CASE("Test contains method", "[ArrayBag]")
     REQUIRE_FALSE(bag.contains("eggs"));
 }
 
+TEST_CASE("Test replace method", "[ArrayBag]")
+{
+    ArrayBag<std::string> bag;
+    bag.add("milk");
+    bag.add("bread");
+    REQUIRE(bag.replace("milk", "eggs"));
+    REQUIRE_FALSE(bag.contains("milk"));
+    REQUIRE(bag.contains("eggs"));
+    REQUIRE_FALSE(bag.replace("apple", "banana"));
+}
+
+bool external_replace(ArrayBag<std::string> &bag, std::string oldEntry, std::string newEntry)
+{
+    // implement a non-member function to replace oldEntry with newEntry in bag
+    return false;
+}
+
 TEST_CASE("Test toVector method", "[ArrayBag]")
 {
     ArrayBag<std::string> bag;
