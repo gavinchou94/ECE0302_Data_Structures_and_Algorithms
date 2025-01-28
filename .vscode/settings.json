@@ -21,8 +21,9 @@
   "workbench.colorTheme": "Visual Studio Dark",
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": false,
-  
+
   "cmake.sourceDirectory": [
+                              "${workspaceFolder}/Problems/problem2_lists",
                               "${workspaceFolder}/Lectures/Lecture_4_list_implementations",
                               "${workspaceFolder}/Problems/problem1_bags",
                               "${workspaceFolder}/Lectures/Lecture_3_ADT_bag_list_exception",
