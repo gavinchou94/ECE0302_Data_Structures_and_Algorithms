@@ -23,5 +23,5 @@ add_custom_target(submission COMMAND
 add_custom_target(starter_download COMMAND
     ${CMAKE_COMMAND} -E tar "cfv" "${CMAKE_CURRENT_BINARY_DIR}/../problem2_starter.zip" --format=zip
     ${SOURCE}
-    catch.hpp CMakeLists.txt
+    Node.hpp Node.tpp catch.hpp CMakeLists.txt
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})  
