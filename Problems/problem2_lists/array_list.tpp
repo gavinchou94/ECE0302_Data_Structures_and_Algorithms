@@ -65,6 +65,7 @@ void ArrayList<T>::clear()
   // TODO
 }
 
+// throw std::out_of_range if position < 1 or position > getLength()
 template <typename T>
 T ArrayList<T>::getEntry(std::size_t position) const
 {
@@ -72,6 +73,7 @@ T ArrayList<T>::getEntry(std::size_t position) const
   return T();
 }
 
+// throw std::out_of_range if position < 1 or position > getLength()
 template <typename T>
 void ArrayList<T>::setEntry(std::size_t position, const T &newValue)
 {

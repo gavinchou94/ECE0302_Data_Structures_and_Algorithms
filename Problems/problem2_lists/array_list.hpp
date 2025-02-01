@@ -38,9 +38,11 @@ public:
   void clear();
 
   // get a copy of the item at position
+  // throw std::out_of_range if position < 1 or position > getLength()
   T getEntry(std::size_t position) const;
 
   // set the value of the item at position
+  // throw std::out_of_range if position < 1 or position > getLength()
   void setEntry(std::size_t position, const T &newValue);
 
 private:
