@@ -32,8 +32,11 @@ public:
       }
 
       hanoi(n - 1, source, spare, target, displayMoves);
+      exitRecursion();
       hanoi(1, source, target, spare, displayMoves);
+      exitRecursion();
       hanoi(n - 1, spare, target, source, displayMoves);
+      exitRecursion();
    }
 };
 #endif // TOWER_OF_HANOI_TRACKER_HPP

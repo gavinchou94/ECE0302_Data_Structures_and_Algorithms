@@ -73,7 +73,7 @@ TEST_CASE("Test list properties after insertions", "[ArrayList]")
    {
       listPtr->insert(i + 1, data[i]);
    }
-   REQUIRE(listPtr->insert(6, "six") == false);        // 6 is invalid index to insert
+   REQUIRE(listPtr->insert(6, "six") == false);        // 6 is still a valid index, but why?
    REQUIRE(listPtr->insert(0, "zero") == false);       // 0 is invalid index to insert
    REQUIRE(listPtr->insert(-1, "minus one") == false); // -1 is invalid index to insert
    REQUIRE(listPtr->isEmpty() == false);
@@ -187,7 +187,9 @@ TEST_CASE("Test list properties after LinkedList insertions", "[LinkedList]")
       listPtr->insert(i + 1, data[i]);
    }
 
-   // Refer back to Line 69, why is listPtr->insert(6, "six") true for ListList but not for ArrayList?
+   // Supposing you have finished the stub implementation (remove/add/copy constructor) of LinkedList.
+   // Refer back to Line 76, why is listPtr->insert(6, "six") true for LinkedList but not for ArrayList?
+   REQUIRE(listPtr->insert(6, "six") == true);         // 6 is valid index to insert, since 6 = getLength() + 1
    REQUIRE(listPtr->insert(7, "seven") == false);      // 7 is invalid index to insert
    REQUIRE(listPtr->insert(0, "zero") == false);       // 0 is invalid index to insert
    REQUIRE(listPtr->insert(-1, "minus one") == false); // -1 is invalid index to insert
@@ -306,7 +308,7 @@ TEST_CASE("Test user choice of ArrayList or LinkedList", "[List]")
 
    // write your statements here to test user choice of ArrayList or LinkedList
    // Based on user input of 'A' or 'L', create a listPtr to the different derived classes
-   // so that the operations at Line 304-310 can be performed on the listPtr
+   // so that the operations at Line 315-321 can be performed on the listPtr
 
    // write your statements here
 
