@@ -22,17 +22,20 @@ bool is_operand(char c)
 
 int find_prefix_end(std::string s, int startpos)
 {
+  // from pseudocode of chapter 5.2.2 on Page 167
   char c = s[startpos];
   if (is_operand(c))
   {
+    // a single operand(i.e., letter) is a valid prefix expression
     return startpos;
   }
   else if (is_operator(c))
   {
-    int thisEnd = find_prefix_end(s, startpos + 1);
+    int thisEnd = find_prefix_end(s, startpos + 1); // find the end of the first prefix expression after c
     if (thisEnd >= 0)
     {
-      return find_prefix_end(s, thisEnd + 1);
+      return find_prefix_end(s, thisEnd + 1); // find the end of the second prefix expression after c
+      // that concludes the prefix expression range starting at c
     }
     return -1;
   }
@@ -90,6 +93,8 @@ float evaluate_prefix(std::string s)
     return eval_expression(operand1, op, operand2);
   }
 }
+
+// Below is the main function that can be used to test using command line inputs
 
 // int main(int argc, char **argv)
 // {

@@ -1,4 +1,7 @@
 /** Pseudocode
+
+// Used in lecture, also in the book at Page 187
+
 searchWithRecursion(currentLocation) : boolean
 {
   foundExit = false if (currentLocation is the exit)
