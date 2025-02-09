@@ -23,6 +23,7 @@
   "workbench.statusBar.visible": false,
 
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Lectures/Lecture_7_alg_efficiency_big_o",
     "${workspaceFolder}/Projects/project2_palindrome",
     "${workspaceFolder}/Problems/problem3_postpre",
     "${workspaceFolder}/Lectures/Lecture_6_recursive_prefix",
