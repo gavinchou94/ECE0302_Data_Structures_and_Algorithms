@@ -23,6 +23,7 @@
   "workbench.statusBar.visible": false,
 
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Problems/problem4_sorting",
     "${workspaceFolder}/Lectures/Lecture_7_alg_efficiency_big_o",
     "${workspaceFolder}/Projects/project2_palindrome",
     "${workspaceFolder}/Problems/problem3_postpre",
