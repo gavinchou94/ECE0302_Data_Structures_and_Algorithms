@@ -47,7 +47,7 @@ TEST_CASE("Sort: Integer sorting", "[sorting]")
   lst.insert(4, 25);
   lst.insert(5, 11);
 
-  quick_sort(lst, 0, lst.getLength() - 1);
+  quick_sort(lst, 1, lst.getLength()); // note the change here!
 
   // check sorted list
   REQUIRE(lst.getEntry(1) == 4);
@@ -57,4 +57,26 @@ TEST_CASE("Sort: Integer sorting", "[sorting]")
   REQUIRE(lst.getEntry(5) == 100);
 }
 
-/* Your test cases here */
+TEST_CASE("Sort: Test move entry throw", "[sorting]")
+{
+  List<int> lst;
+
+  lst.insert(1, 100);
+  lst.insert(2, 4);
+  lst.insert(3, 10);
+  lst.insert(4, 25);
+  lst.insert(5, 11);
+
+  // try to move forward
+  REQUIRE_THROWS(lst.moveEntry(1, 6));
+  REQUIRE_THROWS(lst.moveEntry(0, 5));
+
+  lst.insert(5, 11);
+  REQUIRE_NOTHROW(lst.moveEntry(1, 6));
+
+  // try to move backward
+  REQUIRE_THROWS(lst.moveEntry(7, 1));
+  REQUIRE_THROWS(lst.moveEntry(6, -1));
+}
+
+/* Your test cases */

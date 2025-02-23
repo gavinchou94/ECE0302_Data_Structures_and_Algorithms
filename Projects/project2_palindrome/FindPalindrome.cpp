@@ -11,9 +11,10 @@ using namespace std;
 // their scope is limited
 
 // helper function to convert string to lower case
-static void convertToLowerCase(string & value)
+static void convertToLowerCase(string &value)
 {
-	for (int i=0; i<value.size(); i++) {
+	for (int i = 0; i < value.size(); i++)
+	{
 		value[i] = tolower(value[i]);
 	}
 }
@@ -21,8 +22,8 @@ static void convertToLowerCase(string & value)
 //------------------- PRIVATE CLASS METHODS ------------------------------------
 
 // private recursive function. Must use this signature!
-void FindPalindrome::recursiveFindPalindromes(vector<string>
-        candidateStringVector, vector<string> currentStringVector)
+void FindPalindrome::recursiveFindPalindromes(vector<string> candidateStringVector,
+																							vector<string> currentStringVector)
 {
 	// TODO need to implement this recursive function!
 	return;
@@ -37,8 +38,10 @@ bool FindPalindrome::isPalindrome(string currentString) const
 	convertToLowerCase(currentString);
 	// see if the characters are symmetric...
 	int stringLength = currentString.size();
-	for (int i=0; i<stringLength/2; i++) {
-		if (currentString[i] != currentString[stringLength - i - 1]) {
+	for (int i = 0; i < stringLength / 2; i++)
+	{
+		if (currentString[i] != currentString[stringLength - i - 1])
+		{
 			return false;
 		}
 	}
@@ -60,7 +63,7 @@ FindPalindrome::~FindPalindrome()
 int FindPalindrome::number() const
 {
 	// TODO need to implement this...
-	return 10;
+	return -1;
 }
 
 void FindPalindrome::clear()
@@ -68,34 +71,33 @@ void FindPalindrome::clear()
 	// TODO need to implement this...
 }
 
-bool FindPalindrome::cutTest1(const vector<string> & stringVector)
+bool FindPalindrome::cutTest1(const vector<string> &stringVector)
 {
 	// TODO need to implement this...
 	return false;
 }
 
-bool FindPalindrome::cutTest2(const vector<string> & stringVector1,
-                              const vector<string> & stringVector2)
+bool FindPalindrome::cutTest2(const vector<string> &stringVector1,
+															const vector<string> &stringVector2)
 {
 	// TODO need to implement this...
 	return false;
 }
 
-bool FindPalindrome::add(const string & value)
+bool FindPalindrome::add(const string &value)
 {
 	// TODO need to implement this...
 	return false;
 }
 
-bool FindPalindrome::add(const vector<string> & stringVector)
+bool FindPalindrome::add(const vector<string> &stringVector)
 {
 	// TODO need to implement this...
 	return false;
 }
 
-vector< vector<string> > FindPalindrome::toVector() const
+vector<vector<string>> FindPalindrome::toVector() const
 {
 	// TODO need to implement this...
-	return vector< vector<string> >();
+	return vector<vector<string>>();
 }
-

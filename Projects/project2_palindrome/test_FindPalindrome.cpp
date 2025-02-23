@@ -5,14 +5,15 @@
 
 // There should be at least one test per FindPalindrome method
 
-TEST_CASE( "Test adding words", "[FindPalindrome]" )
+TEST_CASE("Test adding words", "[FindPalindrome]")
 {
 	FindPalindrome b;
 	REQUIRE(b.add("kayak"));
 	REQUIRE(!b.add("kayak1"));
 }
 
-TEST_CASE("test recursion", "[FindPalindrome]"){
+TEST_CASE("test recursion", "[FindPalindrome]")
+{
 	FindPalindrome b;
 
 	REQUIRE(b.add("a"));
@@ -20,4 +21,3 @@ TEST_CASE("test recursion", "[FindPalindrome]"){
 	REQUIRE(b.add("AaA"));
 	REQUIRE(b.number() == 6);
 }
-
