@@ -119,6 +119,8 @@ TEST_CASE("Iterator erase and insert", "[vector]")
   REQUIRE(vec.size() == 5);
   REQUIRE(vec.back() == 40);
 }
+// TODO: based on the above lines, what are the return type of erase and insert?
+// Test yourself what are the return value if erase and insert on vector get invalid?
 
 TEST_CASE("Using while loop to traverse vector and measure time", "[vector]")
 {
@@ -169,6 +171,21 @@ TEST_CASE("Using while loop to traverse vector and measure time", "[vector]")
 
 // for (it = vec.begin(); it != vec.end(); ++it)
 // {doing stuff on array, or linked-list etc}
+
+// Try an example:
+// Consider the algorithm below to copy a list in reverse,
+// What is the time complexity using iterators as shown below
+// assuming n items in each list
+
+// LinkedIterator<T> it1 = lst1.begin();
+// LinkedIterator<T> it2 = lst2.rbegin();
+// while (it1 != lst1.end())
+// {
+//   T copied_item = *it1;
+//   *it2 = copied_item;
+//   ++it1;
+//   --it2;
+// }
 
 TEST_CASE("Using iterator to traverse string", "[string]")
 {
