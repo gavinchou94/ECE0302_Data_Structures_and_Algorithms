@@ -23,6 +23,7 @@
   "workbench.statusBar.visible": false,
 
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Supplementary/Midterm_Exam",
     "${workspaceFolder}/Lectures/Lecture_12_smart_pointer_use",
     "${workspaceFolder}/Lectures/Lecture_10_iterator_use",
     "${workspaceFolder}/Lectures/Lecture_8_9_sort_alg",
@@ -39,7 +40,7 @@
     "${workspaceFolder}/Projects/project1_bitarray",
     "${workspaceFolder}/Lectures/Lecture_2_binding_operator_review",
     "${workspaceFolder}/Problems/problem0_add",
-    "${workspaceFolder}/Homework/Tests_with_Catch/version_3",
+    "${workspaceFolder}/Supplementary/Tests_with_Catch/version_3",
     "${workspaceFolder}/Lectures/Lecture_1_inheritance_templates_review",
     "${workspaceFolder}/References_301/9_inh_overriding/inh_overriding_end",
     "${workspaceFolder}/References_301/10_templates/templates_end"
