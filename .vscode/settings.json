@@ -23,6 +23,7 @@
   "workbench.statusBar.visible": false,
 
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Problems/problem5_sortedlist",
     "${workspaceFolder}/Supplementary/Midterm_Exam",
     "${workspaceFolder}/Lectures/Lecture_12_smart_pointer_use",
     "${workspaceFolder}/Lectures/Lecture_10_iterator_use",
