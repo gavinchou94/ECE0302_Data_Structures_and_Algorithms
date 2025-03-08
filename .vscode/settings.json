@@ -23,6 +23,8 @@
   "workbench.statusBar.visible": false,
 
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Lectures/Lecture_13_ADT_sortedlist",
+    "${workspaceFolder}/Lectures/Lecture_11_ADT_stack",
     "${workspaceFolder}/Problems/problem5_sortedlist",
     "${workspaceFolder}/Supplementary/Midterm_Exam",
     "${workspaceFolder}/Lectures/Lecture_12_smart_pointer_use",
@@ -86,6 +88,7 @@
     "vector": "cpp",
     "algorithm": "cpp",
     "ratio": "cpp",
-    "valarray": "cpp"
+    "valarray": "cpp",
+    "*.tpp": "cpp"
   }
 }
