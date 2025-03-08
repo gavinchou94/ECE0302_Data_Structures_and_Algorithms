@@ -23,6 +23,7 @@
   "workbench.statusBar.visible": false,
 
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Projects/project3_xmlparser",
     "${workspaceFolder}/Lectures/Lecture_13_ADT_sortedlist",
     "${workspaceFolder}/Lectures/Lecture_11_ADT_stack",
     "${workspaceFolder}/Problems/problem5_sortedlist",
