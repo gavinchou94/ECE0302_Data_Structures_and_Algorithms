@@ -21,8 +21,8 @@
   "workbench.colorTheme": "Visual Studio Dark",
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": false,
-
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Problems/problem6_priorityqueue",
     "${workspaceFolder}/Projects/project3_xmlparser",
     "${workspaceFolder}/Lectures/Lecture_13_ADT_sortedlist",
     "${workspaceFolder}/Lectures/Lecture_11_ADT_stack",
