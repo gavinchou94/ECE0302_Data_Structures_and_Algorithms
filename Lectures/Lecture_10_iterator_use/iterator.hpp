@@ -10,6 +10,7 @@ class LinkedIterator
 private:
   // we may later learn to build an iterator for any ADT we defined ourselves
 public:
+
 }; // end LinkedIterator
 
 #endif

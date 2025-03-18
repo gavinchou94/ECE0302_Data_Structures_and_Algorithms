@@ -4,7 +4,7 @@ project(iterator)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(SOURCE iterator.h test_iterator.cpp catch.hpp)
+set(SOURCE iterator.hpp test_iterator.cpp catch.hpp)
 
 add_executable(test_iterator ${SOURCE})
 

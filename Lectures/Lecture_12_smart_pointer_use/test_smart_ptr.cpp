@@ -1,4 +1,4 @@
-/** @file test_.cpp
+/** @file test_smart_ptr.cpp
  * @author G. Zhou
  */
 
@@ -39,6 +39,16 @@ TEST_CASE("shared_ptr usage", "[smart_ptr]")
   REQUIRE(ptr1.use_count() == 2);
   REQUIRE(ptr2.use_count() == 2);
 
+  {
+    std::shared_ptr<int> ptr3 = ptr1;
+    std::shared_ptr<int> ptr4 = ptr2;
+    REQUIRE(ptr1.use_count() == 4);
+    REQUIRE(ptr2.use_count() == 4);
+  } // ptr3, ptr4 goes out of scope
+
+  REQUIRE(ptr1.use_count() == 2);
+  REQUIRE(ptr2.use_count() == 2);
+
   REQUIRE(*ptr2 == 20);
 
   // ptr1 and ptr2 point to the same memory location
@@ -63,7 +73,7 @@ TEST_CASE("weak_ptr usage", "[smart_ptr]")
   // REQUIRE(*ptr2 == 40);
 }
 
-// show an example of deleting a smart pointer on linked node
+// show an example of working with a linked list using smart pointers
 struct Node
 {
   int data;
@@ -72,33 +82,84 @@ struct Node
   Node(int val) : data(val), next(nullptr) {}
 };
 
+// A class definition and implementation
+class BagInt
+{
+private:
+  std::shared_ptr<Node> head;
+
+public:
+  BagInt() : head(nullptr) {}
+
+  void add(int value)
+  {
+    // create a new node and add it to the end of the linked list
+
+    // Syntax:
+    // std::shared_ptr<CLASS> newNode = std::make_shared<CLASS>(DEFAULT_CONSTRUCTOR);
+
+    std::shared_ptr<Node> newNode = std::make_shared<Node>(value);
+    if (!head)
+    {
+      head = newNode;
+    }
+    else
+    {
+      std::shared_ptr<Node> current = head;
+      while (current->next)
+      {
+        current = current->next;
+      }
+      current->next = newNode;
+    }
+  }
+
+  void print() const
+  {
+    std::shared_ptr<Node> current = head;
+    while (current)
+    {
+      std::cout << current->data << " ";
+      current = current->next;
+    }
+    std::cout << std::endl;
+  }
+
+  void clear()
+  {
+    // This will automatically delete all nodes in the linked list
+    head = nullptr;
+  }
+  ~BagInt()
+  {
+    std::cout << "BagInt destructor called" << std::endl;
+    // Destructor is not needed, as shared_ptr will automatically delete the nodes
+    // when they are no longer referenced.
+
+    // Option 1:
+    // head = nullptr; // This will delete all nodes in the linked list
+    // Option 2:
+    // clear(); // This will also delete all nodes in the linked list
+    // Option 3:
+    // Do nothing
+    // Option 4:
+    // delete head;
+  }
+};
+
 TEST_CASE("deleting smart pointer on linked node", "[smart_ptr]")
 {
-  // Create the head node
-  std::shared_ptr<Node> head = std::make_shared<Node>(1);
-  head->next = std::make_shared<Node>(2);
-  head->next->next = std::make_shared<Node>(3);
+  BagInt bag;
+  bag.add(1);
+  bag.add(2);
+  bag.add(3);
 
-  // Print the linked list
-  std::shared_ptr<Node> current = head;
-  while (current)
-  {
-    std::cout << current->data << " ";
-    current = current->next;
-  }
-  std::cout << std::endl;
+  std::cout << "Bag contents: ";
+  bag.print();
 
-  REQUIRE(head.use_count() == 1);             // 1
-  REQUIRE(head->next.use_count() == 1);       // 1
-  REQUIRE(head->next->next.use_count() == 1); // 1
+  bag.clear(); // Clear the bag, which will delete all nodes
+  std::cout << "Cleared bag contents: ";
+  bag.print();
 
-  {
-    std::shared_ptr<Node> tempHead = head;
-    REQUIRE(tempHead.use_count() == 2); // 2
-    REQUIRE(head.use_count() == 2);     // 2
-  }
-  // tempHead is out of scope, use_count should be back to 1
-  REQUIRE(head.use_count() == 1);             // 1
-  REQUIRE(head->next.use_count() == 1);       // 1
-  REQUIRE(head->next->next.use_count() == 1); // 1
+  // uncomment the above option 1/2/3/4 of destructor to see the effect
 }

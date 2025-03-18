@@ -4,7 +4,7 @@
 
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
-#include "iterator.h"
+#include "iterator.hpp"
 
 #include <iostream>
 #include <chrono>
@@ -135,7 +135,7 @@ TEST_CASE("Using while loop to traverse vector and measure time", "[vector]")
   }
   auto end = std::chrono::high_resolution_clock::now();
   std::chrono::duration<double> elapsed = end - start;
-  std::cout << "Time taken: " << elapsed.count() << " seconds" << std::endl;
+  std::cout << "1000 items added, Time taken: " << elapsed.count() << " seconds" << std::endl;
   REQUIRE(sum == 1000);
 
   start = std::chrono::high_resolution_clock::now();
@@ -149,7 +149,7 @@ TEST_CASE("Using while loop to traverse vector and measure time", "[vector]")
   }
   end = std::chrono::high_resolution_clock::now();
   elapsed = end - start;
-  std::cout << "Time taken: " << elapsed.count() << " seconds" << std::endl;
+  std::cout << "100000 items added, Time taken: " << elapsed.count() << " seconds" << std::endl;
   REQUIRE(sum == 100000);
 
   start = std::chrono::high_resolution_clock::now();
@@ -163,29 +163,37 @@ TEST_CASE("Using while loop to traverse vector and measure time", "[vector]")
   }
   end = std::chrono::high_resolution_clock::now();
   elapsed = end - start;
-  std::cout << "Time taken: " << elapsed.count() << " seconds" << std::endl;
+  std::cout << "10000000 items added, Time taken: " << elapsed.count() << " seconds" << std::endl;
   REQUIRE(sum == 10000000);
 }
 // Verify that the time increases by around 100 times and confirms to be O(n)
 // More time complexity could incur if complex module is placed inside iterator loop
 
-// for (it = vec.begin(); it != vec.end(); ++it)
-// {doing stuff on array, or linked-list etc}
+TEST_CASE("Using iterator to copy vector", "[vector]")
+{
+  auto start = std::chrono::high_resolution_clock::now();
 
-// Try an example:
-// Consider the algorithm below to copy a list in reverse,
-// What is the time complexity using iterators as shown below
-// assuming n items in each list
+  const int SIZE = 500; // change to 50 or 5000 to see the time difference
+  std::vector<int> vec1(SIZE, 1);
+  std::vector<int>::iterator it1 = vec1.begin();
 
-// LinkedIterator<T> it1 = lst1.begin();
-// LinkedIterator<T> it2 = lst2.rbegin();
-// while (it1 != lst1.end())
-// {
-//   T copied_item = *it1;
-//   *it2 = copied_item;
-//   ++it1;
-//   --it2;
-// }
+  std::vector<int> vec2(vec1.size());
+  std::vector<int>::iterator it2 = vec2.begin() + vec2.size() - 1;
+
+  while (it1 - vec1.begin() < vec1.size())
+  {
+    int copied_item = *it1;
+    *it2 = copied_item;
+    it1 = it1 + 2; // Skip every other item
+    it2 = it2 - 2;
+    // it1 = it1 + (it1 - vec1.begin() + 1); // equivalent to it1 = it1 * 2;
+    // it2 = it2 - (it1 - vec1.begin() + 1); //
+  }
+  auto end = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> elapsed = end - start;
+  std::cout << "Time taken to copy some items in vector: " << elapsed.count() << " seconds" << std::endl;
+  REQUIRE(vec2[SIZE - 1] == 1);
+}
 
 TEST_CASE("Using iterator to traverse string", "[string]")
 {
