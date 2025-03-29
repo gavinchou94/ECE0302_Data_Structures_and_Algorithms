@@ -22,6 +22,7 @@
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": false,
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Lectures/Lecture_17_ADT_tree",
     "${workspaceFolder}/Projects/project4_pathfinder",
     "${workspaceFolder}/Problems/problem7_bst",
     "${workspaceFolder}/Lectures/Lecture_15_16_ADT_queue",
