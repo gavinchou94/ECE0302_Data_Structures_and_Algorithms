@@ -73,6 +73,7 @@ public:
    * @throw throw a std::runtime_error if no path is found*/
   void findPath(std::string strategy = "NSWE");
 
+  // BONUS: Visualization, should use almost identical codes as above, with some addtions to write to GIF file
   /** @brief Find the path from start to end using BFS algorithm and Queue ADT (all same as above), with visualization
    * @param strategy: string representing the search strategy
    * @param outfile: string representing the name of the output file

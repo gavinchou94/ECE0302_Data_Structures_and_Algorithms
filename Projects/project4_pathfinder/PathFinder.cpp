@@ -29,6 +29,7 @@ void PathFinder::findPath(std::string strategy)
     // Must use Queue ADT to implement BFS algorithm
 }
 
+// BONUS: Visualization, should use almost identical codes as above, with some addtions to write to GIF file
 void PathFinder::findPathWithVisualization(const std::string &outfile, int frame_duration, int frame_gap, std::string strategy)
 {
     // frame_duration and frame_gap should stay the same throughout the function
