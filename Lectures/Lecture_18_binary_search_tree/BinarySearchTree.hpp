@@ -15,7 +15,10 @@ private:
    int getLeftChildIndex(int parentIndex) const;
    int getRightChildIndex(int parentIndex) const;
    int getParentIndex(int childIndex) const;
+   int getIndexOf(const ItemType &anEntry) const;
+   int getHeightHelper(int index) const;
    void resizeArray();
+   void shiftSubtreeUp(int &index, int &targetIndex);
 
 public:
    //------------------------------------------------------------
@@ -45,6 +48,8 @@ public:
    void postorderTraverse(void visit(ItemType &)) const override;
 
    void inorderHelper(int index, void visit(ItemType &)) const;
+   void preorderHelper(int index, void visit(ItemType &)) const;
+   void postorderHelper(int index, void visit(ItemType &)) const;
 }; // end BinarySearchTree
 
 #include "BinarySearchTree.tpp"
