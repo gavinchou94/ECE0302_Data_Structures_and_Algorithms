@@ -13,7 +13,7 @@ enable_testing()
 
 add_test(test-heap test-heap)
 
-add_custom_target(starter_download COMMAND
-    ${CMAKE_COMMAND} -E tar "cfv" "${CMAKE_CURRENT_BINARY_DIR}/../Lec18.zip" --format=zip
+add_custom_target(direct_download COMMAND
+    ${CMAKE_COMMAND} -E tar "cfv" "${CMAKE_CURRENT_BINARY_DIR}/../Lec19.zip" --format=zip
     ${SOURCE} CMakeLists.txt catch.hpp abstract_heap.hpp
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
