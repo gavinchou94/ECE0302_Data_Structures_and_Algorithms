@@ -22,6 +22,7 @@
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": false,
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Lectures/Lecture_21_balanced_tree",
     "${workspaceFolder}/Lectures/Lecture_20_dict_hash",
     "${workspaceFolder}/Lectures/Lecture_19_ADT_heap",
     "${workspaceFolder}/Problems/problem8_heap",
