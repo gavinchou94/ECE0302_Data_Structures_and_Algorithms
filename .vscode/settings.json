@@ -22,6 +22,7 @@
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": false,
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Projects/project5_puzzle",
     "${workspaceFolder}/Projects/projectX_bonus",
     "${workspaceFolder}/Problems/problem9_graph",
     "${workspaceFolder}/Lectures/Lecture_22_23_more_trees",
