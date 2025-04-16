@@ -22,5 +22,5 @@ add_custom_target(submission COMMAND
 
 add_custom_target(starter_download COMMAND
   ${CMAKE_COMMAND} -E tar "cfv" "${CMAKE_CURRENT_BINARY_DIR}/../project5_starter.zip" --format=zip
-  test_solver.cpp catch.hpp puzzle.hpp puzzle.cpp state.hpp state.tpp ${SOURCE} ${IMAGE_RESOURCE} "lib/*"
+  test_solver.cpp catch.hpp CMakeLists.txt puzzle.hpp puzzle.cpp state.hpp state.tpp ${SOURCE} ${IMAGE_RESOURCE} "lib/*"
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})

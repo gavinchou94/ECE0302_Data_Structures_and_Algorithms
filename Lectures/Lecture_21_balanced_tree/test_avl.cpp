@@ -5,7 +5,9 @@
 #include "AVLtree.hpp"
 #include "BinaryNode.hpp"
 
-// test AVLtree constructor
+// Try this visualization of the AVL tree:
+// https://www.cs.usfca.edu/~galles/visualization/AVLtree.html
+
 TEST_CASE("AVLtree: test construct", "[construct]")
 {
   AVLTree<int> tree;

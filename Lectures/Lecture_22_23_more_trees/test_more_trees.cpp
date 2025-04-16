@@ -6,6 +6,11 @@
 #include "Linked23.hpp"
 #include "LinkedRB.hpp"
 
+// Try this visualization of the 2-3 tree:
+// https://www.cs.usfca.edu/~galles/visualization/BTree.html
+// Try this visualization of the red-black tree:
+// https://www.cs.usfca.edu/~galles/visualization/RedBlack.html
+
 // Test lecture examples: Lecture 22
 TEST_CASE("Add nodes one by one", "[Linked23]")
 {

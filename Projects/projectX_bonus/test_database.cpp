@@ -4,6 +4,18 @@
 
 #include "Database.hpp"
 
+/* All test cases used on Gradescope will be provided here later
+
+You don't need to write any test cases for submission purposes.
+
+But your submission to gradescope is conditional on passing majority unit test cases locally
+ and upon a clear understanding of all the code you write via OHs meeting, during which
+ we not only verify the integrity of your code, but also help you!
+
+After that, you will have the access to Gradescope submission link (by the due date) to earn points.
+
+*/
+
 // struct used just for testing
 struct TestEntryBook
 {
@@ -125,9 +137,3 @@ TEST_CASE("TestEntryBook Type", "[entry type]")
 
     // TODO
 }
-
-/* All test cases on Gradescope will be provided here */
-
-/* Your submission to gradescope is conditional on locally passing majority unit test cases
- and a clear understanding of all the code you write via OHs meeting!
-*/

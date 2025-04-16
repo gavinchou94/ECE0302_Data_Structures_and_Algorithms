@@ -4,6 +4,9 @@
 
 #include "TreeMinHeap.hpp"
 
+// Try this visualization of the heap:
+// https://www.cs.usfca.edu/~galles/visualization/Heap.html
+
 TEST_CASE("Heap: test construct", "[construct]")
 {
   TreeMinHeap<int> heap;

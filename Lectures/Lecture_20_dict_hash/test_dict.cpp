@@ -5,6 +5,11 @@
 #include "ArrayDictionary.hpp"
 #include "HashedDictionary.hpp"
 
+// Try this visualization of the hashed table:
+// https://www.cs.usfca.edu/~galles/visualization/OpenHash.html
+
+// Our given implementation is a hash table with chaining(closed addressing)
+
 TEST_CASE("ArrayDictionary Basic", "[ArrayDictionary]")
 {
   ArrayDictionary<int, std::string> dict;
