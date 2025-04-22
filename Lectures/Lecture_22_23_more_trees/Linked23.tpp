@@ -322,9 +322,7 @@ std::shared_ptr<TriNode<ItemType>> Linked23<ItemType>::splitNode(
   }
 
   // Create two new child nodes
-  auto leftChild = std::make_shared<TriNode<ItemType>>(small); // small =140, middle =180, large = 230
-                                                               // 140  210 220 250 260
-                                                               // 120 170
+  auto leftChild = std::make_shared<TriNode<ItemType>>(small);
   if (node->getLeftChildPtr())
   {
     if (newItem < node->getSmallItem())
