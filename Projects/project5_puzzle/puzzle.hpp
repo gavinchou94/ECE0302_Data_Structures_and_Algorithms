@@ -16,6 +16,7 @@ public:
   // tiles are labeled BLANK and A-H, they are mapped to 0-8 using enum
   enum Tile
   {
+    BLANK,
     A,
     B,
     C,
@@ -23,8 +24,7 @@ public:
     E,
     F,
     G,
-    H,
-    BLANK
+    H
   };
 
   // a position is a 0 <= row < 3 and 0 <= column < 3

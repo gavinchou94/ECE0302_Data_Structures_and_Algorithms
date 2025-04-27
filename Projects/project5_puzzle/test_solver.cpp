@@ -191,4 +191,69 @@ TEST_CASE("Solver: Test-5", "[PuzzleSolver]")
   }
 }
 
-/* Write your own unit test*/
+/** Two time-consuming tests are given here for your reference.
+  * Uncomment them to try locally
+  * The test case of cost 31 should be executed within 1 minute locally to avoid timeout on the autograder.
+
+TEST_CASE("Puzzle: solve puzzle of cost=8 and show procedures", "[PuzzleSolver]")
+{
+
+  Puzzle puzzle1, puzzle2;
+  REQUIRE(puzzle1.fromString("123456780"));
+  REQUIRE(puzzle2.fromString("012563478"));
+  REQUIRE(puzzle1 != puzzle2);
+  REQUIRE(puzzle1.heuristic(puzzle2) == 12); // heuristic also takes into account of the distance of the blank tile
+
+  PuzzleSolver solver(puzzle2, puzzle1);
+  bool found;
+  std::size_t solution_cost;
+  std::tie(found, solution_cost) = solver.search();
+
+  REQUIRE(found);
+  REQUIRE(solution_cost == 8);
+
+  std::pair<bool, Puzzle> curr_result = std::make_pair(true, puzzle2);
+  std::vector<Puzzle::Action> actions = {Puzzle::RIGHT, Puzzle::RIGHT, Puzzle::DOWN, Puzzle::LEFT, Puzzle::LEFT, Puzzle::DOWN, Puzzle::RIGHT, Puzzle::RIGHT};
+  for (int i = 0; i < actions.size(); ++i)
+  {
+    curr_result = curr_result.second.apply(actions[i]);
+    REQUIRE(curr_result.first);
+
+    Puzzle result = curr_result.second;
+    bool found;
+    std::size_t solution_cost;
+    PuzzleSolver solver(result, puzzle1);
+    std::tie(found, solution_cost) = solver.search();
+    REQUIRE(found);
+    REQUIRE(solution_cost == 8 - (i + 1));                   // Check if the cost decreases by 1 for each action
+    REQUIRE(result.heuristic(puzzle1) <= solution_cost + 4); // Check if the heuristic is always admissible
+  }
+  REQUIRE(curr_result.second == puzzle1); // Check if the final state is the goal state
+}
+
+TEST_CASE("Puzzle: testing the puzzle solver limit of cost=31", "[PuzzleSolver]")
+{
+  Puzzle puzzle1, puzzle2;
+  REQUIRE(puzzle1.fromString("123456780"));
+  REQUIRE(puzzle2.fromString("867254301"));
+
+  PuzzleSolver solver(puzzle2, puzzle1);
+  bool found;
+  std::size_t solution_cost;
+  auto start = std::chrono::high_resolution_clock::now();
+  std::tie(found, solution_cost) = solver.search();
+  auto end = std::chrono::high_resolution_clock::now();
+  std::chrono::duration<double> elapsed = end - start;
+
+  REQUIRE(found);
+  REQUIRE(solution_cost == 31);
+
+  std::cout << "\n**********************************************************\n"
+            << std::endl;
+  std::cout << "Time taken to find solutions in the hardest puzzle: " << elapsed.count() << " seconds" << std::endl;
+  std::cout << "\n**********************************************************\n"
+            << std::endl;
+}
+*/
+
+/* You still need to write your own unit test*/
