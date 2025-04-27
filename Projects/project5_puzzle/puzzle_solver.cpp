@@ -29,7 +29,8 @@ std::pair<bool, std::size_t> PuzzleSolver::search()
 
   std::size_t solution_cost;
   frontier_queue<Puzzle> frontier;
-  // TODO: instantiate explored
+
+  // TODO: instantiate the explored states using some appropriate data structure
 
   frontier.push(initial, 0, initial.heuristic(goal));
 
@@ -46,14 +47,19 @@ std::pair<bool, std::size_t> PuzzleSolver::search()
     Puzzle value = node.getValue();
     std::size_t cost = node.getPathCost();
 
-    // TODO: add state to explored
-
-    // TODO: visualize the solving process, check DemoVisualize()
+    // TODO: add state to explored, you need to decide where to put this
 
     if (value.heuristic(goal) == 0)
     {
       found = true;
       solution_cost = node.getPathCost();
+
+      // TODO here: add the solution path to the gif, using backtracking and std::unordered_map
+      // Hint: put std::unordered_map<Puzzle, Puzzle> parent_map somewhere, and parent_map[key] = value as you go
+      // Within A* search, parent node is updated along the way, so you can use a map to store/modify the parent of each state
+      // It is suggested to include this in checkoff
+      // no need to implement in autograder since it will delay the search()
+
       break;
     }
 
@@ -63,11 +69,9 @@ std::pair<bool, std::size_t> PuzzleSolver::search()
       Puzzle result;
       std::tie(ok, result) = value.apply(static_cast<Puzzle::Action>(a));
 
-      if (ok)
+      if (ok) // if the action is valid
       {
-        // TODO: define in_explored as whether the result has been explored
-
-        bool in_explored = false;
+        bool in_explored = false; // TODO: update in_explored as whether the result has been explored
         bool in_frontier = frontier.contains(result);
         if (!(in_explored || in_frontier))
         {
