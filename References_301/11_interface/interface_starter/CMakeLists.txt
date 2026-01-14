@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.10)
-project(interface)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+project(interface)
 set(SOURCE test_interface.cpp SafeArray.hpp SafeArray.tpp
 	SearchableArray.hpp SearchableArray.tpp
         UniqueArray.hpp UniqueArray.tpp

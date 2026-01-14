@@ -16,30 +16,30 @@ TEST_CASE("Test array indexing", "[array-index]")
     int arr[5] = {0, 10, 20, 30, 40}; // make sure to match size
 
     // One way to test indexing one by one
-    //REQUIRE(arr[0]==0);
-    //REQUIRE(arr[1]==10);
-    //REQUIRE(arr[2]==20);
-    //REQUIRE(arr[3]==30);
-    //REQUIRE(arr[4]==40);
+    // REQUIRE(arr[0]==0);
+    // REQUIRE(arr[1]==10);
+    // REQUIRE(arr[2]==20);
+    // REQUIRE(arr[3]==30);
+    // REQUIRE(arr[4]==40);
 
     // Another way to test indexing using for-loop
     for (int i = 0; i < 5; i++)
     {
-        REQUIRE(arr[i]==10*i);
+        REQUIRE(arr[i] == 10 * i);
     }
 
-    //int test = arr[5]; // test access out of bounds
+    // int test = arr[5]; // test access out of bounds, this is undefined behavior
 }
 
 TEST_CASE("Test array printing", "[array-printing]")
 {
-    // int dim=5; int arr[dim]={0,10,20,30,40}; //variable-sized object may not be initialized
+    // int dim=5; int arr[dim]={0,10,20,30,40}; //variable-sized arr may not be initialized
     const int size = 5; // size has to be a const int
     int arr[size] = {0, 10, 20, 30, 40};
 
     display(arr, size);
 
-    //std::cout << arr[5] << std::endl; // print out-of-bounds array element
+    // std::cout << arr[5] << std::endl; // print out-of-bounds array element
 }
 
 TEST_CASE("Test array addressing", "[array-addressing]")

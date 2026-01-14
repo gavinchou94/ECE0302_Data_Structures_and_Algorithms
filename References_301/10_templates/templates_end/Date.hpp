@@ -1,5 +1,4 @@
 // This is final version of Date.hpp file
-// clear some comments
 
 #ifndef _DATE_H
 #define _DATE_H
@@ -21,9 +20,9 @@ class Date{
         bool set_month(MONTH);
         bool set_day(int);
         static const int min_year;
-        bool operator==(const Date&); // operator usually just takes arg as const reference
+        bool operator==(const Date&);
 };
 
-bool operator<(const Date&, const Date&); //non-member operator, or non-member function
+bool operator<(const Date&, const Date&);
 
 #endif

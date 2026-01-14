@@ -14,19 +14,19 @@ TEST_CASE("Test array indexing", "[array-index]")
     int arr[5] = {0, 10, 20, 30, 40}; // make sure to match size
 
     // One way to test indexing one by one
-    //REQUIRE(arr[0]==0);
-    //REQUIRE(arr[1]==10);
-    //REQUIRE(arr[2]==20);
-    //REQUIRE(arr[3]==30);
-    //REQUIRE(arr[4]==40);
+    // REQUIRE(arr[0]==0);
+    // REQUIRE(arr[1]==10);
+    // REQUIRE(arr[2]==20);
+    // REQUIRE(arr[3]==30);
+    // REQUIRE(arr[4]==40);
 
     // Another way to test indexing using for-loop
     for (int i = 0; i < 5; i++)
     {
-        REQUIRE(arr[i]==10*i);
+        REQUIRE(arr[i] == 10 * i);
     }
 
-    //int test = arr[5]; // test access out of bounds
+    // int test = arr[5]; // test access out of bounds, this is undefined behavior
 }
 
 TEST_CASE("Test array printing", "[array-printing]")

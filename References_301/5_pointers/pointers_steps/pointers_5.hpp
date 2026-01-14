@@ -12,17 +12,18 @@
  * @param size The number of elements in the array.
  * @return A pointer to the newly allocated array that contains the copied elements.
  */
-int * copy(const int * arr, const int size){
+int *copy(const int *arr, const int size)
+{
     // function returns a ptr, therefore return type is "int * "
-    // first argument is a ptr to an int array, const is added due to unmodified feature
-    // second argument is size, also const
+    // first argument is a ptr to an int array, const is added due to the unmodified feature
+    // second argument is size, also const throughout the function
 
-    int * arrcopy = new int[size];
-    for (int i=0; i<size; i++){
-        arrcopy[i]=arr[i];
-    } 
+    int *arrcopy = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        arrcopy[i] = arr[i];
+    }
     return arrcopy;
-
 }
 
 /**
@@ -32,9 +33,8 @@ int * copy(const int * arr, const int size){
  * @param newval The new integer value to append to the array.
  * @param size Reference to the integer representing the current size of the array; will be updated after appending.
  */
-void append(int*& arr, const int newval, int& size)
+void append(int *&arr, const int newval, int &size)
 {
-
 }
 
 #endif

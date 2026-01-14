@@ -3,10 +3,11 @@
 
 #include "SafeArray.hpp"
 
-class SearchableArray: public SafeArray {
-    public:
-        using SafeArray::SafeArray; 
-        bool search(int);
+class SearchableArray : public SafeArray
+{
+public:
+    using SafeArray::SafeArray;
+    bool search(int);
 };
 
 #endif

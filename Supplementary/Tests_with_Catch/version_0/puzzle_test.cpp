@@ -1,8 +1,8 @@
 /** @file puzzle_test.cpp */
 
-#include "puzzle.hpp" 
+#include "puzzle.hpp"
 
-void run_tests(); 
+void run_tests();
 
 int main()
 {

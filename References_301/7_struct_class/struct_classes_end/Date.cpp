@@ -6,7 +6,7 @@
 
 const int Date::min_year = 1900;
 
-Date::Date(int y, MONTH m, int d): month(m), day(d)
+Date::Date(int y, MONTH m, int d) : month(m), day(d)
 {
     set_year(y); // calling set_year() would also trigger throw exception
 }
@@ -28,7 +28,8 @@ int Date::get_day() const
 
 bool Date::set_year(int y)
 {
-    if (y<min_year){
+    if (y < min_year)
+    {
         throw std::invalid_argument{"invalid year"};
     }
     year = y;
@@ -47,7 +48,7 @@ bool Date::set_day(int d)
     return true;
 }
 
-// customed operator == for class Date to directly compare two objects
+// custom operator == for class Date to directly compare two objects
 // :: to indicate it is a member function
 // can use get_year(), or directly .year
 bool Date::operator==(const Date &d)
@@ -59,18 +60,21 @@ bool Date::operator==(const Date &d)
     return false;
 }
 
-// customed operator < for class Date to directly compare two objects
+// custom operator < for class Date to directly compare two objects
 // not having :: indicates that it is a non-member function
 // should use get_year(), not .year
 bool operator<(const Date &d1, const Date &d2)
 {
-    if (d1.get_year() < d2.get_year()){
+    if (d1.get_year() < d2.get_year())
+    {
         return true;
     }
-    if (d1.get_year() == d2.get_year() && d1.get_month() < d2.get_month()){
+    if (d1.get_year() == d2.get_year() && d1.get_month() < d2.get_month())
+    {
         return true;
     }
-    if (d1.get_year() == d2.get_year() && d1.get_month() == d2.get_month() && d1.get_day() < d2.get_day()){
+    if (d1.get_year() == d2.get_year() && d1.get_month() == d2.get_month() && d1.get_day() < d2.get_day())
+    {
         return true;
     }
     return false;

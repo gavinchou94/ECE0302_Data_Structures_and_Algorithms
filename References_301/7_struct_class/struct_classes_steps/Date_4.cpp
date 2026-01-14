@@ -5,7 +5,7 @@
 
 #include "Date_4.hpp"
 
-Date::Date(int y, int m, int d): year(y), month(m), day(d)
+Date::Date(int y, int m, int d) : year(y), month(m), day(d)
 {
 }
 

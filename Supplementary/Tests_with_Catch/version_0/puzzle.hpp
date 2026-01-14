@@ -1,3 +1,5 @@
 /** @file puzzle.hpp */
 
-class Puzzle {};
+class Puzzle
+{
+};

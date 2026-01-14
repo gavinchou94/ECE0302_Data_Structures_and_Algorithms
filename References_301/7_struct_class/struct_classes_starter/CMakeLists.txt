@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.5)
-project(vec_and_class)
+cmake_minimum_required(VERSION 3.10)
+project(struct_and_class)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)

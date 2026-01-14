@@ -27,20 +27,20 @@ void swap(int arr[], int idx1, int idx2)
 // swap two chars in a string in a directly modified manner
 // including the '&' symbol passes the string by reference
 // it passes the "address location" of the string variable
-void swap(std::string& str, int idx1, int idx2)
+void swap(std::string &str, int idx1, int idx2)
 {
     char temp = str[idx1];
     str[idx1] = str[idx2];
     str[idx2] = temp;
 }
-//void swap(std::string str, int idx1, int idx2) // swap two chars and get a new string, i.e., "passing by value"
+// void swap(std::string str, int idx1, int idx2) // swap two chars and get a new string, i.e., "passing by value"
 //{
-//    char temp = str[idx1];
-//    str[idx1] = str[idx2];
-//    str[idx2] = temp;
-//    std::cout << "My string within this function is now: "
-//              << str << std::endl; // only the copy is modified within the function, as a local variable.
-//}
+//     char temp = str[idx1];
+//     str[idx1] = str[idx2];
+//     str[idx2] = temp;
+//     std::cout << "My string within this function is now: "
+//               << str << std::endl; // only the copy is modified within the function, as a local variable.
+// }
 
 // for copy, the first argument is const to prevent modification
 // values in arrfrom can be accessed, but not modified
@@ -99,7 +99,7 @@ bool binary_search(const int arr[], int val, int start, int end)
     }
 
     // Base case 2: search range is narrowed down to just 2 elements
-    if (end == start+1)
+    if (end == start + 1)
     {
         return false;
     }

@@ -5,8 +5,10 @@
 // Throws a logic_error if the value already exists in the array.
 void UniqueArray::set(int index, int val)
 {
-    for (int i = 0; i < get_size(); i++){
-        if (get(i) == val){
+    for (int i = 0; i < get_size(); i++)
+    {
+        if (get(i) == val)
+        {
             throw std::logic_error("Duplicate value");
         }
     }

@@ -1,36 +1,39 @@
-// This is final version of SafeArray.hpp from last exercise
+// This is final version of SafeArray.hpp
+// no change from SafeArray2.hpp
 
 #ifndef _SAFE_ARRAY_HPP
 #define _SAFE_ARRAY_HPP
 
 template <typename T>
-class SafeArray {
-    private:
-        T * dataptr; // pointer to the array of T type
-        int size;
-    
-    public:
-        SafeArray();
-        SafeArray(int);
-        virtual ~SafeArray();
+class SafeArray // no T here: a template argument list is not allowed in a declaration of a primary template
+{
+private:
+    T *dataptr; // pointer to the array of T type
+    int size;   // size of the array stays as int
 
-        // This is copy constructor
-        SafeArray(const SafeArray<T>&); // add <T> to the argument type
+public:
+    SafeArray();          // default constructor
+    SafeArray(int);       // parameterized constructor
+    virtual ~SafeArray(); // destructor
 
-        // This is copy assignment
-        SafeArray<T> &operator=(SafeArray<T>); // add <T> to the argument type
+    // This is copy constructor
+    SafeArray(const SafeArray<T> &); // add <T> to the argument type
 
-        int get_size() const;
-        T get(int) const; // return T type
-        virtual void set(int, T); // pass T type as argument
+    // This is copy assignment
+    SafeArray<T> &operator=(SafeArray<T>); // add <T> to the argument type
+
+    int get_size() const;     // return size, stays as int
+    T get(int) const;         // return T type
+    virtual void set(int, T); // pass T type as second argument, set index to value
 };
 
-template <typename T>
-SafeArray<T> operator+(const SafeArray<T>&, T); // pass by const reference
+template <typename T>                            // this is non-member function, so we need to add <T> here
+SafeArray<T> operator+(const SafeArray<T> &, T); // element-wise addition, return type is SafeArray<T>
+                                                 // argument is also SafeArray<T>
 
 template <typename T>
-SafeArray<T> operator+(T, const SafeArray<T>&); // pass by const reference
+SafeArray<T> operator+(T, const SafeArray<T> &); // same as above
 
-#include "SafeArray.tpp"
+#include "SafeArray.tpp" // include the template implementation file
 
 #endif

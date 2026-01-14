@@ -5,11 +5,11 @@
 #include "Employee_5.hpp"
 
 // this is the constructor function
-Employee::Employee(std::string n, int p, Date d): starting_day(d)
+Employee::Employee(std::string n, int p, Date d) : starting_day(d)
 {
-   name = n; // LHS is attribute, RHS is function args
-   hourly_paid = p;
-} // as from the name, constructor initializes the object 
+    name = n; // LHS is attribute, RHS is function args
+    hourly_paid = p;
+} // as from the name, constructor initializes the object
 // by assigning the args to object's private attributes
 
 // Below is a better way for constructor function: in-line constructor
@@ -18,7 +18,7 @@ Employee::Employee(std::string n, int p, Date d): starting_day(d)
 // }
 
 // this is another constructor function that sets default attributes to be blank,0,{1900,1,1}
-Employee::Employee(): name(""), hourly_paid(0), starting_day(Date::min_year,1,1)
+Employee::Employee() : name(""), hourly_paid(0), starting_day(Date::min_year, 1, 1)
 {
 }
 
@@ -39,7 +39,7 @@ Date Employee::get_starting_date() const
 
 bool Employee::set_name(std::string n)
 {
-    name = n; // passing the arg to private attribute
+    name = n;    // passing the arg to private attribute
     return true; // if success, return true
 }
 
@@ -57,12 +57,12 @@ bool Employee::set_starting_date(Date d)
 
 int Employee::get_weekly_rate() const // this public function doesn't update private attributes
 {
-    return hourly_paid*70; // assuming someone is working extremely hard (70 hours/week)
+    return hourly_paid * 70; // assuming someone is working extremely hard (70 hours/week)
 }
 
 int Employee::get_yearly_rate() const // this public function doesn't update private attributes
 {
-    return get_weekly_rate()*52;
+    return get_weekly_rate() * 52;
 }
 
 // note that member function definition line has class-name:: before function

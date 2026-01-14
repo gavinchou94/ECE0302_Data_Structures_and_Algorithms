@@ -6,17 +6,18 @@
 #ifndef _SAFE_ARRAY_HPP
 #define _SAFE_ARRAY_HPP
 
-class SafeArray {
-    private:
-        int * dataptr;
-        int size;
-    
-    public:
-        SafeArray();
-        SafeArray(int);
-        ~SafeArray(); // has to include this due to dataptr
+class SafeArray
+{
+private:
+    int *dataptr;
+    int size;
 
-        int get_size() const;
+public:
+    SafeArray();
+    SafeArray(int);
+    ~SafeArray(); // has to include this due to dataptr
+
+    int get_size() const;
 };
 
 #endif

@@ -9,7 +9,7 @@
 
 const int Date::min_year = 1900;
 
-Date::Date(int y, int m, int d): month(m), day(d)
+Date::Date(int y, int m, int d) : month(m), day(d)
 {
     set_year(y); // calling set_year() would also trigger throw exception
 }
@@ -31,7 +31,8 @@ int Date::get_day() const
 
 bool Date::set_year(int y)
 {
-    if (y<min_year){
+    if (y < min_year)
+    {
         throw std::invalid_argument{"invalid year"};
     }
     year = y;

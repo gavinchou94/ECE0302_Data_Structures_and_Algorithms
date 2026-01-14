@@ -32,22 +32,22 @@ void swap(int arr[], int idx1, int idx2)
 // including the '&' symbol passes the string by reference
 // it passes the "address location" of the string variable
 // comment lines 31-36, and uncomment below to see another example of passing by value
-void swap(std::string& str, int idx1, int idx2)
+void swap(std::string &str, int idx1, int idx2)
 {
     char temp = str[idx1];
     str[idx1] = str[idx2];
     str[idx2] = temp;
 }
-//void swap(std::string str, int idx1, int idx2) // swap two chars and get a new string, i.e., "passing by value"
+// void swap(std::string str, int idx1, int idx2) // swap two chars and get a new string, i.e., "passing by value"
 //{
-//    char temp = str[idx1];
-//    str[idx1] = str[idx2];
-//    str[idx2] = temp;
-//    std::cout << "My string within this function is now: "
-//              << str << std::endl; // only the copy is modified within the function, as a local variable.
-//}
+//     char temp = str[idx1];
+//     str[idx1] = str[idx2];
+//     str[idx2] = temp;
+//     std::cout << "My string within this function is now: "
+//               << str << std::endl; // only the copy is modified within the function, as a local variable.
+// }
 
-// for copy, the first argument is const to prevent modification
+// for copy, the first argument is set to be const to prevent modification
 // values in arrfrom can be accessed, but not modified
 // if we made the second argument also const, the compiler will throw an error because arrto elements are modified
 void copy(const int arrfrom[], int arrto[], int size)

@@ -5,16 +5,16 @@
 template <typename ItemType>
 ToyBox<ItemType>::ToyBox() : boxColor(BLACK)
 {
-} 
+}
 
 template <typename ItemType>
-ToyBox<ItemType>::ToyBox(const Color& theColor) : boxColor(theColor)
+ToyBox<ItemType>::ToyBox(const Color &theColor) : boxColor(theColor)
 {
 }
 
 template <typename ItemType>
-ToyBox<ItemType>::ToyBox(const ItemType& theItem, const Color& theColor)
-   :PlainBox<ItemType>(theItem), boxColor(theColor) // Initialize item data fields
+ToyBox<ItemType>::ToyBox(const ItemType &theItem, const Color &theColor)
+    : PlainBox<ItemType>(theItem), boxColor(theColor) // Initialize item data fields
 {
 }
 

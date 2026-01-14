@@ -1,7 +1,7 @@
 /** @file test_boxes.cpp
  * @author Frank M. Carrano, Tim Henry
  * @copyright 2016 Pearson Education
- * @version 2.0, modified in 2025 by G. Zhou for ECE0302
+ * @version 3.0, modified in 2026 by G. Zhou for ECE0302
  */
 
 #define CATCH_CONFIG_MAIN
@@ -47,12 +47,11 @@ TEST_CASE("2. Test ToyBox with parameterized constructor and new method", "[ToyB
 
 TEST_CASE("3. Test MagicBox", "[MagicBox]")
 {
-   PlainBox<std::string> *magicCard;
-   magicCard = new MagicBox<std::string>("Jack of Diamonds");
+   PlainBox<std::string> *magicCard = new MagicBox<std::string>("Jack of Diamonds");
    REQUIRE(magicCard->getItem() == "Jack of Diamonds");
 
    magicCard->setItem("Joker");
-   REQUIRE(false); // TODO: write one statement to test the item stored,
+   REQUIRE(false); // TODO: edit the REQUIRE statement to test the item stored,
                    // recall that MagicBox would only hold the first item
 }
 
@@ -69,7 +68,7 @@ private:
 public:
    PlainBox2() {};
    PlainBox2(const ItemType &theItem) : item(theItem) {};
-   void setItem(const ItemType &theItem) { item = theItem; };
+   void setItem(const ItemType &theItem) { item = theItem; }; // notice the difference here from PlainBox.hpp
    ItemType getItem() const { return item; };
 };
 
@@ -96,27 +95,26 @@ public:
 
 TEST_CASE("4. Test MagicBox2", "[MagicBox2]")
 {
-   PlainBox2<std::string> *magicCard2;
-   magicCard2 = new MagicBox2<std::string>("Jack of Diamonds");
+   PlainBox2<std::string> *magicCard2 = new MagicBox2<std::string>("Jack of Diamonds");
    REQUIRE(magicCard2->getItem() == "Jack of Diamonds");
 
    magicCard2->setItem("Joker");
-   REQUIRE(false); // TODO: write one statement to test the item stored,
-                   // recall that MagicBox2 is supposed to only hold the first item
+   REQUIRE(false); // TODO: edit the REQUIRE statement to test the item stored,
+                   // recall that MagicBox2 is supposed to only hold the first item with proper implementation
 }
 
 TEST_CASE("5. Test BoxInterface", "[BoxInterface]")
 {
-   // BoxInterface<int> boxOfIntegers;    // EXPLAIN: why would this line of code not compile?
+   // BoxInterface<int> boxOfIntegers;    // TODO: explain why this line of code would not compile?
 
    BoxInterface<char> *generalBox[3];
 
-   // FIXME: which single line would you modify in PlainBox.hpp to make the following codes compile?
+   // TODO: which single line would you modify in PlainBox.hpp to make the following code block compile?
+   //       think about the hierarchy of UML of all these classes?
 
    // generalBox[0] = new PlainBox<char>('P');
    // generalBox[1] = new ToyBox<char>('T', WHITE);
    // generalBox[2] = new MagicBox<char>('M');
-
    // REQUIRE(generalBox[0]->getItem()=='P');
    // REQUIRE(generalBox[1]->getItem()=='T');
    // REQUIRE(generalBox[2]->getItem()=='M');

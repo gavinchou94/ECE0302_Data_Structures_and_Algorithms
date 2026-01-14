@@ -6,28 +6,29 @@
 #ifndef _SAFE_ARRAY_HPP
 #define _SAFE_ARRAY_HPP
 
-class SafeArray {
-    private:
-        int * dataptr;
-        int size;
-    
-    public:
-        SafeArray();
-        SafeArray(int);
-        ~SafeArray(); // has to include this due to dataptr
+class SafeArray
+{
+private:
+    int *dataptr;
+    int size;
 
-        // this is copy constructor
-        SafeArray(const SafeArray&); 
-        // copy constructor is usually recognized by passing a const reference of object of same class
+public:
+    SafeArray();
+    SafeArray(int);
+    ~SafeArray(); // has to include this due to dataptr
 
-        // Side note here:
-        // When an object is passed by value to a function, it first calls the copy constructor backend
-        // e.g., when passing c1 to function1(Class c){do something with c},
-        // the first step is essentially Class c(c1)
+    // this is copy constructor
+    SafeArray(const SafeArray &);
+    // copy constructor is usually recognized by passing a const reference of object of same class
 
-        int get_size() const;
-        int operator[](int) const;  // overloading [] for SafeArray object to just access the information
-        int &operator[](int);       // overloading [] for SafeArray object to update the information
+    // Side note here:
+    // When an object is passed by value to a function, it first calls the copy constructor backend
+    // e.g., when passing c1 to function1(Class c){do something with c},
+    // the first step is essentially Class c(c1)
+
+    int get_size() const;
+    int operator[](int) const; // overloading [] for SafeArray object to just access the information
+    int &operator[](int);      // overloading [] for SafeArray object to update the information
 };
 
 #endif

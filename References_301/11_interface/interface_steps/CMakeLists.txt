@@ -4,11 +4,11 @@ project(interface)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(SOURCE test_interface1a.cpp SafeArray1.hpp SafeArray1.tpp
-	SearchableArray.hpp SearchableArray.tpp
-        UniqueArray.hpp UniqueArray.tpp
+set(SOURCE test_interface1c.cpp SafeArray1.hpp SafeArray1.tpp
+	SearchableArray1.hpp SearchableArray1.tpp
+        UniqueArray1.hpp UniqueArray1.tpp
         Date.hpp Date.cpp
-        Array.hpp
+        Array1.hpp
         catch.hpp)
 
 add_executable(test_interface ${SOURCE})

@@ -3,7 +3,7 @@
 
 TEST_CASE("Test array indexing", "[array-index]")
 {
-   REQUIRE(true);
+    REQUIRE(true);
 }
 
 TEST_CASE("Test array printing", "[array-printing]")

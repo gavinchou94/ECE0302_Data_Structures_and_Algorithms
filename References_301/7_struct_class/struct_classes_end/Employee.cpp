@@ -4,14 +4,14 @@
 #include "Employee.hpp"
 
 // this is the constructor function
-Employee::Employee(std::string n, int p, Date d): starting_day(d)
+Employee::Employee(std::string n, int p, Date d) : starting_day(d)
 {
-   name = n; // LHS is attribute, RHS is function args
-   hourly_paid = p;
+    name = n; // LHS is attribute, RHS is function arg
+    hourly_paid = p;
 }
 
 // this is another constructor function that sets default attributes to be blank,0,{1900,1,1}
-Employee::Employee(): name(""), hourly_paid(0), starting_day(Date::min_year,JAN,1)
+Employee::Employee() : name(""), hourly_paid(0), starting_day(Date::min_year, JAN, 1)
 {
 }
 
@@ -50,10 +50,10 @@ bool Employee::set_starting_date(Date d)
 
 int Employee::get_weekly_rate() const
 {
-    return hourly_paid*70;
+    return hourly_paid * 70;
 }
 
 int Employee::get_yearly_rate() const
 {
-    return get_weekly_rate()*52;
+    return get_weekly_rate() * 52;
 }

@@ -3,8 +3,7 @@
 
 #include "SafeArray.hpp"
 
-TEST_CASE("Test default construction", "[safearray]") {
+TEST_CASE("Test default construction", "[safearray]")
+{
     SafeArray arr;
-    
 }
-
