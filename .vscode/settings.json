@@ -22,6 +22,7 @@
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": false,
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Problems/problem2_bags",
     "${workspaceFolder}/Lectures/Lecture_4_list_implementations",
     "${workspaceFolder}/Projects/project1_bitarray",
     "${workspaceFolder}/Lectures/Lecture_3_ADT_bag_list_exception",
