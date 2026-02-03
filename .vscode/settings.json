@@ -22,6 +22,7 @@
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": false,
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Problems/problem3_lists",
     "${workspaceFolder}/Lectures/Lecture_6_recursive_prefix",
     "${workspaceFolder}/Lectures/Lecture_5_recursive_alg_basics",
     "${workspaceFolder}/Problems/problem2_bags",
