@@ -22,6 +22,7 @@
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": false,
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Projects/project2_palindrome",
     "${workspaceFolder}/Lectures/Lecture_7_alg_efficiency_big_o",
     "${workspaceFolder}/Problems/problem3_lists",
     "${workspaceFolder}/Lectures/Lecture_6_recursive_prefix",
