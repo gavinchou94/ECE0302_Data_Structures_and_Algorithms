@@ -34,6 +34,30 @@ TEST_CASE("Raw pointer usage", "[smart_ptr]")
   delete[] ptr3; // delete the array to avoid memory leak
 }
 
+template <typename T>
+class PlainBox
+{
+public:
+  T item;
+  PlainBox(const T &anItem) : item(anItem) {}
+  T getItem() const { return item; }
+  void setItem(const T &newItem) { item = newItem; }
+};
+
+void showBoxItem(std::unique_ptr<PlainBox<std::string>> &theBox)
+{
+  std::cout << theBox->getItem() << std::endl;
+}
+void changeBoxItem(std::unique_ptr<PlainBox<std::string>> theBox, std::string theItem)
+{
+  theBox->setItem(theItem);
+  std::cout << theBox->getItem() << std::endl;
+}
+// Generally, passing by value calls copy constructor
+// (but unique_ptr doesn't have copy constructor, so you need to call std::move first to transfer ownership.
+// which means theBox in this function is a copy of the original unique_ptr that is passed in
+// and it owns the PlainBox object. Object in the main function will lose ownership and become nullptr.
+
 TEST_CASE("unique_ptr usage", "[smart_ptr]")
 {
   // ptr1 is a unique_ptr that owns an int
@@ -73,6 +97,21 @@ TEST_CASE("unique_ptr usage", "[smart_ptr]")
   REQUIRE(ptr3 != nullptr);
   ptr3.reset();
   REQUIRE(ptr3 == nullptr);
+
+  std::unique_ptr<PlainBox<std::string>> myboxPtr(new PlainBox<std::string>("my"));
+  showBoxItem(myboxPtr);
+  if (myboxPtr != nullptr)
+  {
+    std::cout << "myboxPtr is still valid after being passed to showBoxItem"
+              << "(pass by reference).\n\n ";
+  }
+  // changeBoxItem(myboxPtr, "new item"); // cannot pass by value directly
+  changeBoxItem(std::move(myboxPtr), "new item");
+  if (myboxPtr == nullptr)
+  {
+    std::cout << "myboxPtr is now nullptr after being moved "
+              << "to changeBoxItem function.\n\n";
+  }
 }
 
 TEST_CASE("shared_ptr usage", "[smart_ptr]")

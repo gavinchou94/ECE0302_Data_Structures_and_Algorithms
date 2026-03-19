@@ -8,6 +8,7 @@
 
 #include "evaluate_prefix.hpp"
 #include "writeBackward.hpp"
+#include "solve_maze.hpp"
 #include "catch.hpp"
 #include <iostream>
 #include <string>
@@ -118,4 +119,43 @@ TEST_CASE("Test prefix expression evaluation complex", "[prefix]")
 {
   std::string s = "*-+1323";
   REQUIRE(evaluate_prefix(s) == 6); // 1 + 3 = 4, 4 - 2 = 2, 2 * 3 = 6
+}
+
+TEST_CASE("Test maze solving with recursion", "[solve_maze]")
+{
+  Maze maze = {
+      {'o', 'x', 'o', 'o', 'o'},
+      {'o', 'x', 'o', 'x', 'o'},
+      {'o', 'x', 'o', 'x', 'o'},
+      {'o', 'o', 'o', 'x', 'o'},
+      {'o', 'x', 'x', 'x', 'o'}};
+
+  Path path;
+  int maxRecursionDepth = 0;
+  bool foundExit = searchWithRecursion(maze, 0, 0, path, 0, maxRecursionDepth);
+  REQUIRE(foundExit == true);
+
+  std::cout << "Path to exit: ";
+  for (int i = 0; i < path.size(); ++i)
+  {
+    std::cout << path[i];
+    if (i + 1 < path.size())
+    {
+      std::cout << " -> ";
+    }
+  }
+  std::cout << '\n';
+
+  std::cout << "Maze with path marked (v for visited, - for backtracked):\n";
+  for (int i = 0; i < maze.size(); ++i)
+  {
+    for (int j = 0; j < maze[i].size(); ++j)
+    {
+      std::cout << maze[i][j] << ' ';
+    }
+    std::cout << '\n';
+  }
+  std::cout << "Maximum recursion depth reached: " << maxRecursionDepth << '\n';
+  // REQUIRE(maxRecursionDepth == ??); // Verify the maximum recursion depth reached during the search
+  // REQUIRE(maze[?][?] == '-'); // Verify that backtracking occurs at (?,?)
 }

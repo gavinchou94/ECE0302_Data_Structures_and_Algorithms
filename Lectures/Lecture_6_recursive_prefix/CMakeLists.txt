@@ -9,6 +9,7 @@ set(SOURCE
         test_prefix.cpp
         evaluate_prefix.hpp
         writeBackward.hpp
+        solve_maze.hpp
         catch.hpp)
 
 add_executable(evaluate_prefix ${SOURCE})
@@ -19,5 +20,5 @@ add_test(evaluate-prefix evaluate_prefix)
 
 add_custom_target(direct_download COMMAND
     ${CMAKE_COMMAND} -E tar "cfv" "${CMAKE_CURRENT_BINARY_DIR}/../Lec6.zip" --format=zip
-       ${SOURCE} CMakeLists.txt solve_maze.cpp
+       ${SOURCE} CMakeLists.txt
        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})

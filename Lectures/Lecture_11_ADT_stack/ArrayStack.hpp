@@ -5,7 +5,7 @@
 
 #include "StackInterface.hpp"
 
-const int MAX_STACK = 10;
+const int MAX_STACK = 20;
 
 template <typename ItemType>
 class ArrayStack : public StackInterface<ItemType>
