@@ -6,7 +6,7 @@ template <typename ItemType>
 ArrayQueue<ItemType>::ArrayQueue() : back(0), count(0)
 {
 } // end default constructor
-// TODO: Explain why we don't need a private member variable for front?
+// TODO: Explain why we don't need a private member variable for front? And what index is the front of the queue? Can we further simplify the private member variables?
 
 template <typename ItemType>
 bool ArrayQueue<ItemType>::isEmpty() const

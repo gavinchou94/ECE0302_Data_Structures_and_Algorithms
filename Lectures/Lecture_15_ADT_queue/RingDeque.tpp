@@ -34,7 +34,7 @@ void RingDeque<ItemType>::enqueue_front(const ItemType &someItem)
 {
    if (count < DEFAULT_CAPACITY) // Queue has room for another item
    {
-      front = (front - 1 + DEFAULT_CAPACITY) % DEFAULT_CAPACITY;
+      front = (front - 1 + DEFAULT_CAPACITY) % DEFAULT_CAPACITY; // + DEFAULT_CAPACITY is to avoid negative modulo operand
       items[front] = someItem;
       count++;
    }
@@ -63,7 +63,7 @@ void RingDeque<ItemType>::dequeue_back()
 {
    if (!isEmpty())
    {
-      back = (back - 1 + DEFAULT_CAPACITY) % DEFAULT_CAPACITY;
+      back = (back - 1 + DEFAULT_CAPACITY) % DEFAULT_CAPACITY; // + DEFAULT_CAPACITY is to avoid negative modulo operand
       count--;
    }
    else
@@ -102,5 +102,6 @@ bool RingDeque<ItemType>::isFull() const
 } // end isFull
 // End of implementation file.
 
-// TODO: We discussed in class that the time complexity of each operation (enqueue_front, enqueue_back, dequeue_front, dequeue_back, peekFront, peekBack) in this implementation
-// is O(1). Justify this claim by explaining and searching for keywords in the code. 
+// TODO: We discussed in class that the time complexity of each operation
+// (enqueue_front, enqueue_back, dequeue_front, dequeue_back, peekFront, peekBack) in this implementation
+// is O(1). Justify this claim by explaining and searching for keywords in the code.

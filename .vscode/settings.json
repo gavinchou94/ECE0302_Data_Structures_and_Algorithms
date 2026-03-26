@@ -22,6 +22,8 @@
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": false,
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Lectures/Lecture_17_ADT_tree",
+    "${workspaceFolder}/Lectures/Lecture_16_ADT_priorityqueue",
     "${workspaceFolder}/Problems/problem7_priorityqueue",
     "${workspaceFolder}/Lectures/Lecture_15_ADT_queue",
     "${workspaceFolder}/Lectures/Lecture_13_ADT_sortedlist",
