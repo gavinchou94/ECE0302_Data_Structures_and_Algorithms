@@ -22,6 +22,10 @@
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": false,
   "cmake.sourceDirectory": [
+    "${workspaceFolder}/Lectures/Lecture_23_redblack_trees",
+    "${workspaceFolder}/Lectures/Lecture_22_twothree_trees",
+    "${workspaceFolder}/Lectures/Lecture_21_balanced_search_tree",
+    "${workspaceFolder}/Lectures/Lecture_20_ADT_map",
     "${workspaceFolder}/Problems/problem9_heap",
     "${workspaceFolder}/Lectures/Lecture_19_ADT_heap",
     "${workspaceFolder}/Lectures/Lecture_18_ADT_bst",
