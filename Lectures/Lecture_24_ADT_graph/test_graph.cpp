@@ -6,21 +6,6 @@
 #include <string>
 #include <algorithm>
 
-// ─────────────────────────────────────────────────────────────────────────────
-// Helpers
-// ─────────────────────────────────────────────────────────────────────────────
-// Print helpers used in traversal output tests (original style)
-void print_int(int &i) { std::cout << i << "\n"; }
-void print_string(std::string &s) { std::cout << s << "\n"; }
-
-// Builds the shared 7-vertex graph used in traversal tests:
-//
-//   5 -- 2 -- 4 -- 3
-//   |   /    /
-//   10 -- 7
-//
-// Edges added: 5-2, 2-4, 4-3, 10-5, 10-2, 10-7, 7-4
-
 TEST_CASE("Construction: empty graph has zero vertices and edges")
 {
   LinkedGraph<int> g;
@@ -265,7 +250,7 @@ TEST_CASE("Large graph: bulk removal reduces counts correctly")
   REQUIRE(g.add(4, 2));
   // 0 - 1
   // | /
-  // 2 - 3 
+  // 2 - 3
   // | /
   // 4
   REQUIRE(g.getNumVertices() == 5);
@@ -315,4 +300,72 @@ TEST_CASE("Re-traversal: BFS after removing a vertex excludes it")
   REQUIRE(items.size() == 3);
   REQUIRE(items == std::vector<char>({'b', 'c', 'd'})); // BFS order after removal
   items.clear();
+}
+
+std::vector<int> intItems;
+void intVisit(int &item) { intItems.push_back(item); }
+
+TEST_CASE("Test Large DFS and BFS")
+{
+  LinkedGraph<int> testGraph;
+  REQUIRE(testGraph.add(5, 2));
+  REQUIRE(testGraph.add(2, 7));
+  REQUIRE(testGraph.add(7, 9));
+  REQUIRE(testGraph.add(9, 16));
+  REQUIRE(testGraph.add(16, 25));
+  REQUIRE(testGraph.add(25, 41));
+  REQUIRE(testGraph.add(41, 5));
+  REQUIRE(testGraph.add(5, 16));
+  REQUIRE(testGraph.add(2, 9));
+  REQUIRE(testGraph.add(7, 25));
+  REQUIRE(testGraph.add(9, 41));
+  REQUIRE(testGraph.add(16, 2));
+  REQUIRE(testGraph.add(25, -1));
+  REQUIRE(testGraph.add(25, -2));
+  REQUIRE(testGraph.add(25, -3));
+  REQUIRE(testGraph.add(25, -4));
+  REQUIRE(testGraph.add(25, -5));
+
+  /*
+                  5--------
+                /   \     |
+               /     \    |
+             2 ------- 16 |
+            / \       /|  |
+           /   \     / |  |
+          7 -\  \   /  |  |
+           \  \  \ /   /  |
+            \  \_ 9---/--41
+             \    |  /   /
+              \   | /   /
+               \  |   /
+                  25
+          /   /   |   \    \
+        -1  -2   -3   -4   -5
+  */
+  REQUIRE(testGraph.getNumVertices() == 12);
+  REQUIRE(testGraph.getNumEdges() == 17);
+
+  // DFS order tracing
+  // Visited: 5, 2, 7, 9, 16, 25, -5, ...
+  // Stack:
+  // Top -> Bottom
+  // 5
+  // 2 5
+  // 7 2 5
+  // 9 7 2 5
+  // 16 9 7 2 5
+  // 25 16 9 7 2 5
+  // -5 25 16 9 7 2 5
+  // Given that neighbor visit status is stored in the vertex objects via iterators,
+  // What is the value of active neighbor for each vertex at this point?
+  // What is the value of next neighbor for each vertex at this point?
+  // For example, for vertex 5, the active neighbor is 2 and the next neighbor is 16.
+  testGraph.depthFirstTraversal(5, intVisit);
+  // REQUIRE(intItems == std::vector<int>({???})); 
+  intItems.clear();
+
+  testGraph.breadthFirstTraversal(5, intVisit);
+  // REQUIRE(intItems == std::vector<int>({???}));
+  intItems.clear();
 }

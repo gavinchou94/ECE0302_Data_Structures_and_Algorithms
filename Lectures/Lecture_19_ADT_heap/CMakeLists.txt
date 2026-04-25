@@ -5,7 +5,9 @@ project(heap)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(SOURCE test_heap.cpp TreeMinHeap.hpp TreeMinHeap.tpp BinaryNode.hpp BinaryNode.tpp)
+set(SOURCE test_heap.cpp TreePrinter.hpp
+    TreeMinHeap.hpp TreeMinHeap.tpp 
+    BinaryNode.hpp BinaryNode.tpp)
 
 add_executable(test-heap catch.hpp abstract_heap.hpp ${SOURCE})
 

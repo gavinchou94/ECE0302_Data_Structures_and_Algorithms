@@ -132,6 +132,12 @@ int TreeMinHeap<ItemType>::getHeight() const noexcept
 }
 
 template <typename ItemType>
+std::shared_ptr<BinaryNode<ItemType>> TreeMinHeap<ItemType>::getRoot() const noexcept
+{
+  return rootPtr;
+}
+
+template <typename ItemType>
 ItemType TreeMinHeap<ItemType>::peekTop() const
 {
   if (isEmpty())

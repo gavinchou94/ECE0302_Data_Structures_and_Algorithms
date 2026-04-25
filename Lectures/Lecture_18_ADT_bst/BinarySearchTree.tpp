@@ -56,6 +56,11 @@ int BinarySearchTree<ItemType>::getIndexOf(const ItemType &anEntry) const
 template <typename ItemType>
 int BinarySearchTree<ItemType>::getHeightHelper(int index) const
 {
+   if (index >= capacity)
+   {
+      return 0;
+   }
+
    if (treeArray[index] == ItemType())
    {
       return 0;
@@ -66,6 +71,20 @@ int BinarySearchTree<ItemType>::getHeightHelper(int index) const
 
    return 1 + std::max(leftHeight, rightHeight);
 } // end getHeightHelper
+
+template <typename ItemType>
+std::shared_ptr<BinaryNode<ItemType>> BinarySearchTree<ItemType>::buildNodeTreeHelper(int index) const
+{
+   if (index >= capacity || treeArray[index] == ItemType())
+   {
+      return nullptr;
+   }
+
+   auto node = std::make_shared<BinaryNode<ItemType>>(treeArray[index]);
+   node->setLeftChildPtr(buildNodeTreeHelper(getLeftChildIndex(index)));
+   node->setRightChildPtr(buildNodeTreeHelper(getRightChildIndex(index)));
+   return node;
+}
 
 template <typename ItemType>
 void BinarySearchTree<ItemType>::resizeArray()
@@ -172,6 +191,12 @@ ItemType BinarySearchTree<ItemType>::getRootData() const
 
    return treeArray[0];
 } // end getRootData
+
+template <typename ItemType>
+std::shared_ptr<BinaryNode<ItemType>> BinarySearchTree<ItemType>::getRoot() const
+{
+   return buildNodeTreeHelper(0);
+}
 
 template <typename ItemType>
 void BinarySearchTree<ItemType>::setRootData(const ItemType &newData)

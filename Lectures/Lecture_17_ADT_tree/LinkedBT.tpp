@@ -102,6 +102,12 @@ ItemType BinaryTree<ItemType>::getRootData() const
 }
 
 template <typename ItemType>
+Node<ItemType> *BinaryTree<ItemType>::getRoot() const
+{
+  return (isEmpty()) ? nullptr : root;
+}
+
+template <typename ItemType>
 void BinaryTree<ItemType>::setRootData(const ItemType &someItem)
 {
   if (isEmpty())

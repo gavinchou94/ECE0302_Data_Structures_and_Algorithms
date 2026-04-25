@@ -4,6 +4,7 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "BinarySearchTree.hpp"
+#include "TreePrinter.hpp"
 
 TEST_CASE("BST: Adding elements to Binary Search Tree")
 {
@@ -135,6 +136,8 @@ TEST_CASE("BST: Adding more")
   REQUIRE(bst.getHeight() == 5);
   REQUIRE(bst.getNumberOfNodes() == 10);
   REQUIRE(bst.getRootData() == 20);
+
+  TreePrinter::printBST(bst.getRoot(), "BST, using a wrapper for a vector-based implementation");
 }
 
 TEST_CASE("BST: Adding using a sorted order")
@@ -159,6 +162,8 @@ TEST_CASE("BST: Adding using a sorted order")
   // Comparing this array/vector-based implementation to your Problem 8 linked-based implementation,
   // which approach do you think is more negatively affected in terms of performance
   // when elements are added in sorted order? Why?
+
+  TreePrinter::printBST(bst.getRoot(), "BST, using a wrapper for a vector-based implementation");
 }
 
 TEST_CASE("BST: Writing and reading tree data")

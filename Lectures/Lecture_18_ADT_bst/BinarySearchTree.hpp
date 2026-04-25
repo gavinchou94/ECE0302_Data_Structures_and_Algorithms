@@ -4,6 +4,7 @@
 #define BINARY_SEARCH_TREE_
 
 #include "abstract_binary_tree.hpp"
+#include "BinaryNode.hpp"
 
 template <typename ItemType>
 class BinarySearchTree : public BinaryTreeInterface<ItemType>
@@ -19,6 +20,7 @@ private:
    int getParentIndex(int childIndex) const;
    int getIndexOf(const ItemType &anEntry) const;
    int getHeightHelper(int index) const;
+   std::shared_ptr<BinaryNode<ItemType>> buildNodeTreeHelper(int index) const;
    void resizeArray();
    void shiftSubtreeUp(int currentIndex, int targetIndex);
    void preorderHelper(int index, std::function<void(ItemType &)> visit) const;
@@ -39,6 +41,7 @@ public:
    int getNumberOfNodes() const override;
 
    ItemType getRootData() const override;
+   std::shared_ptr<BinaryNode<ItemType>> getRoot() const;
    void setRootData(const ItemType &newData) override;
 
    bool add(const ItemType &newEntry) override;

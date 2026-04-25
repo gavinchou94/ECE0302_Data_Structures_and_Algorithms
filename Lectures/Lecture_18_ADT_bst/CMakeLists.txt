@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCE abstract_binary_tree.hpp BinarySearchTree.hpp BinarySearchTree.tpp
            BinaryNode.hpp BinaryNode.tpp
+           TreePrinter.hpp
             test_bst.cpp catch.hpp)
 
 add_executable(test_bst ${SOURCE})

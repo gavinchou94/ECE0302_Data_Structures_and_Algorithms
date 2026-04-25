@@ -3,6 +3,7 @@
 #include "catch.hpp"
 
 #include "TreeMinHeap.hpp"
+#include "TreePrinter.hpp"
 
 TEST_CASE("Heap: test construct", "[construct]")
 {
@@ -122,6 +123,8 @@ TEST_CASE("Heap: test frequent add and remove", "[remove]")
   heap.add(25);
   heap.add(5);
   REQUIRE(heap.peekTop() == 5);
+
+  TreePrinter::printTree(heap, "Heap after adding 10, 20, 30, 25, 5");
   heap.remove();
   REQUIRE(heap.peekTop() == 10);
   heap.remove();
@@ -131,10 +134,12 @@ TEST_CASE("Heap: test frequent add and remove", "[remove]")
   REQUIRE(heap.add(20) == true);
   REQUIRE(heap.peekTop() == 20);
   heap.remove();
+  TreePrinter::printTree(heap, "Heap after 3 removes and one add of 20, and one more remove");
 
   heap.add(7);
   heap.remove();
   heap.add(8);
+  TreePrinter::printTree(heap, "Heap after add 7, remove, add 8");
   REQUIRE(heap.peekTop() == 8);
   heap.remove();
   REQUIRE(heap.peekTop() == 25);

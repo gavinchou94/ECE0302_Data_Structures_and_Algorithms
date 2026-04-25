@@ -40,6 +40,7 @@ public:
   bool isEmpty() const noexcept;
   int getNumberOfNodes() const noexcept;
   int getHeight() const noexcept;
+  std::shared_ptr<BinaryNode<ItemType>> getRoot() const noexcept;
 
   /** @throw std::out_of_range if the heap is empty. */
   ItemType peekTop() const;

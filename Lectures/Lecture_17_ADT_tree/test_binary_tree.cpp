@@ -4,6 +4,7 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 #include "LinkedBT.hpp"
+#include "TreePrinter.hpp"
 #include <stdexcept>
 
 TEST_CASE("Test isEmpty() for LinkedBT", "[LinkedBT]")
@@ -47,6 +48,8 @@ TEST_CASE("Test getHeight() and getNumberOfNodes() for LinkedBT", "[LinkedBT]")
    // Why are recursive implementations a natural fit for tree traversal?
    // What is the base case for each of these recursive helpers?
    // What is the best-case and worst-case recursion depth, and how do they relate to tree shape?
+
+   TreePrinter::printBST(tree.getRoot(), "General Binary Tree");
 }
 
 TEST_CASE("Test contains() for LinkedBT", "[LinkedBT]")
@@ -104,6 +107,7 @@ TEST_CASE("Test traverse for LinkedBT", "[LinkedBT]")
    tree.postorderTraverse(visit);
    // TODO: Finish the REQUIRE statement for postorder traversal.
    // REQUIRE(result == (std::vector<char>{???}));
+   TreePrinter::printBST(tree.getRoot(), "General Binary Tree");
 }
 
 TEST_CASE("Test add() handling duplicates", "[LinkedBT]")
@@ -120,4 +124,5 @@ TEST_CASE("Test add() handling duplicates", "[LinkedBT]")
    // REQUIRE(tree.getNumberOfNodes() == ???);
    // REQUIRE(tree.getHeight() == ???);
    REQUIRE(tree.contains(2));
+   TreePrinter::printBST(tree.getRoot(), "General Binary Tree");
 }

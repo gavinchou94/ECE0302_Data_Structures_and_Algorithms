@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <iostream>
 #include <memory>
+#include <queue>
+#include <set>
 #include <sstream>
 
 // ============================================================
@@ -21,6 +23,8 @@
 //    printTwoThreeFour(root)             [10, 20, 30]
 //    printTrie(root)                     [c] / [c*]
 //    printHeap(arr, size)                [42]  (array-backed)
+//    printHeap(root)                     [42]  (linked nodes, using getRoot())
+//    printSpanningTree(g, start)         [a]   (from graph neighbors)
 //    print(root, labelFn, childrenFn)    bring-your-own lambdas
 //
 //  Connector style — no dashes, just spaced arms:
@@ -33,6 +37,29 @@
 
 namespace TreePrinter
 {
+
+  namespace detail
+  {
+    template <typename NodePtr>
+    auto getBSTValue(NodePtr n, int) -> decltype(n->key)
+    {
+      return n->key;
+    }
+
+    template <typename NodePtr>
+    auto getBSTValue(NodePtr n, long) -> decltype(n->data)
+    {
+      return n->data;
+    }
+  } // namespace detail
+
+  template <typename T>
+  std::string valueToString(const T &value)
+  {
+    std::ostringstream oss;
+    oss << value;
+    return oss.str();
+  }
 
   // ---- internal layout node ------------------------------------------
 
@@ -235,7 +262,7 @@ namespace TreePrinter
         root,
         [](Ptr n) -> std::string
         {
-          return "[" + std::to_string(n->key) + "]";
+          return "[" + valueToString(detail::getBSTValue(n, 0)) + "]";
         },
         [](Ptr n) -> std::vector<Ptr>
         {
@@ -244,6 +271,28 @@ namespace TreePrinter
             kids.push_back(n->left);
           if (n->right)
             kids.push_back(n->right);
+          return kids;
+        },
+        title);
+  }
+
+  template <typename BSTNode>
+  void printBST(const std::shared_ptr<BSTNode> &root, const std::string &title = "BST")
+  {
+    using Ptr = std::shared_ptr<BSTNode>;
+    print<Ptr>(
+        root,
+        [](const Ptr &n) -> std::string
+        {
+          return "[" + valueToString(n->getItem()) + "]";
+        },
+        [](const Ptr &n) -> std::vector<Ptr>
+        {
+          std::vector<Ptr> kids;
+          if (n->getLeftChildPtr())
+            kids.push_back(n->getLeftChildPtr());
+          if (n->getRightChildPtr())
+            kids.push_back(n->getRightChildPtr());
           return kids;
         },
         title);
@@ -267,7 +316,7 @@ namespace TreePrinter
           std::string bf = std::to_string(n->bf);
           if (n->bf > 0)
             bf = "+" + bf;
-          return "[" + std::to_string(n->key) + " | bf:" + bf + "]";
+          return "[" + valueToString(n->key) + " | bf:" + bf + "]";
         },
         [](Ptr n) -> std::vector<Ptr>
         {
@@ -314,7 +363,7 @@ namespace TreePrinter
           std::string bf = std::to_string(balance);
           if (balance > 0)
             bf = "+" + bf;
-          return "[" + std::to_string(n->getItem()) + " | bf:" + bf + "]";
+          return "[" + valueToString(n->getItem()) + " | bf:" + bf + "]";
         },
         [](const Ptr &n) -> std::vector<Ptr>
         {
@@ -345,7 +394,7 @@ namespace TreePrinter
         root,
         [&colorFn](Ptr n) -> std::string
         {
-          return "[" + std::to_string(n->key) + ", " + colorFn(n) + "]";
+          return "[" + valueToString(n->key) + ", " + colorFn(n) + "]";
         },
         [](Ptr n) -> std::vector<Ptr>
         {
@@ -368,8 +417,8 @@ namespace TreePrinter
         root,
         [](const Ptr &n) -> std::string
         {
-          std::string color = (n->getColor() == RED) ? "R" : "B";
-          return "[" + std::to_string(n->getItem()) + ", " + color + "]";
+          std::string color = (static_cast<int>(n->getColor()) == 0) ? "R" : "B";
+          return "[" + valueToString(n->getItem()) + ", " + color + "]";
         },
         [](const Ptr &n) -> std::vector<Ptr>
         {
@@ -566,7 +615,7 @@ namespace TreePrinter
     for (int i = 0; i < size; i++)
     {
       nodes[i] = new LayoutNode();
-      nodes[i]->label = "[" + std::to_string(arr[i]) + "]";
+      nodes[i]->label = "[" + valueToString(arr[i]) + "]";
     }
     // Wire children (left-child and right-child of each index)
     for (int i = 0; i < size; i++)
@@ -602,6 +651,121 @@ namespace TreePrinter
   void printHeap(const std::vector<T> &v, const std::string &title = "Heap")
   {
     printHeap(v.data(), (int)v.size(), title);
+  }
+
+  // ----------------------------------------------------------------
+  //  Linked Heap Tree (node-based)
+  //
+  //  Works with heap classes that expose:
+  //    getRoot() -> node pointer (raw/shared)
+  //  and node type exposes:
+  //    getItem(), getLeftChildPtr(), getRightChildPtr()
+  // ----------------------------------------------------------------
+  template <typename HeapType>
+  void printTree(const HeapType &heap, const std::string &title = "Heap")
+  {
+    auto root = heap.getRoot();
+    using Ptr = decltype(root);
+
+    print<Ptr>(
+        root,
+        [](const Ptr &n) -> std::string
+        {
+          return "[" + valueToString(n->getItem()) + "]";
+        },
+        [](const Ptr &n) -> std::vector<Ptr>
+        {
+          std::vector<Ptr> kids;
+          if (n->getLeftChildPtr())
+            kids.push_back(n->getLeftChildPtr());
+          if (n->getRightChildPtr())
+            kids.push_back(n->getRightChildPtr());
+          return kids;
+        },
+        title);
+  }
+
+  template <typename HeapType>
+  void printHeap(const HeapType &heap, const std::string &title = "Heap")
+  {
+    printTree(heap, title);
+  }
+
+  // ----------------------------------------------------------------
+  //  Spanning Tree (graph-backed)
+  //
+  //  Builds a rooted tree view from an undirected graph-like object
+  //  that exposes:
+  //    getNeighbors(label) -> map<label, weight>
+  //
+  //  Usage:
+  //    SpanningTree<char> t = g.prim_spanning('a');
+  //    TreePrinter::printSpanningTree(t, 'a', "Prim Spanning Tree");
+  // ----------------------------------------------------------------
+  template <typename ItemType>
+  struct SpanningTreeViewNode
+  {
+    ItemType label;
+    std::vector<std::shared_ptr<SpanningTreeViewNode<ItemType>>> children;
+  };
+
+  template <typename GraphType, typename ItemType>
+  void printSpanningTree(const GraphType &graph,
+                         const ItemType &start,
+                         const std::string &title = "Spanning Tree")
+  {
+    auto startNeighbors = graph.getNeighbors(start);
+    if (startNeighbors.empty())
+    {
+      std::cout << "(empty tree)\n";
+      return;
+    }
+
+    using ViewNode = SpanningTreeViewNode<ItemType>;
+    using ViewPtr = std::shared_ptr<ViewNode>;
+
+    ViewPtr root = std::make_shared<ViewNode>();
+    root->label = start;
+
+    std::set<ItemType> visited;
+    std::queue<std::pair<ItemType, ViewPtr>> pending;
+
+    visited.insert(start);
+    pending.push(std::make_pair(start, root));
+
+    while (!pending.empty())
+    {
+      ItemType currentLabel = pending.front().first;
+      ViewPtr currentNode = pending.front().second;
+      pending.pop();
+
+      auto neighbors = graph.getNeighbors(currentLabel);
+      for (auto it = neighbors.begin(); it != neighbors.end(); ++it)
+      {
+        if (visited.count(it->first) == 0)
+        {
+          visited.insert(it->first);
+          ViewPtr child = std::make_shared<ViewNode>();
+          child->label = it->first;
+          currentNode->children.push_back(child);
+          pending.push(std::make_pair(it->first, child));
+        }
+      }
+    }
+
+    print<ViewPtr>(
+        root,
+        [](const ViewPtr &n) -> std::string
+        {
+          std::ostringstream oss;
+          oss << "[" << n->label << "]";
+          return oss.str();
+        },
+        [](const ViewPtr &n) -> std::vector<ViewPtr>
+        {
+          return n->children;
+        },
+        title);
   }
 
 } // namespace TreePrinter

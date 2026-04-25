@@ -40,6 +40,7 @@ public:
   int getHeight() const;
   int getNumberOfNodes() const;
   ItemType getRootData() const;
+  Node<ItemType> *getRoot() const;
   void setRootData(const ItemType &someItem);
   bool add(const ItemType &someItem);
   bool remove(const ItemType &target);
