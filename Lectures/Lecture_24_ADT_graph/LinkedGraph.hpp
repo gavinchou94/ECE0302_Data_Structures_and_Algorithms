@@ -37,6 +37,7 @@ public:
    int getNumEdges() const;
    bool add(ItemType start, ItemType end);
    bool add(ItemType start, ItemType end, int edgeWeight);
+   std::map<ItemType, int> getNeighbors(ItemType vertexLabel) const;
 
    // For remove to return true all of the following must be true:
    // 1) start and end vertices exist
@@ -62,13 +63,13 @@ public:
 // Vertex class visualization:
 // ('M', true, adjList={('L', --15--> 'L')}, curr='L')
 
-// There is a vertex with label 'M', it is visited, 
+// There is a vertex with label 'M', it is visited,
 // it has one neighbor 'L' with an edge of weight 15, and the current neighbor is 'L'.
 
 // ('L', false, adjList={('M', --15--> 'M'), ('T', --42--> 'T')}, curr='T')
 
 // There is a vertex with label 'L', it is not visited,
-// it has two neighbors 'M' and 'T' with edges of weights 15 and 42 respectively, 
+// it has two neighbors 'M' and 'T' with edges of weights 15 and 42 respectively,
 // and the current neighbor is 'T'.
 
 // ('T', false, adjList={('L', --42--> 'L')}, curr='L')

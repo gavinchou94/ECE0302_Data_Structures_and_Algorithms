@@ -73,6 +73,26 @@ bool LinkedGraph<ItemType>::add(ItemType start, ItemType end)
    return add(start, end, 0);
 } // end add
 
+template <typename ItemType>
+std::map<ItemType, int> LinkedGraph<ItemType>::getNeighbors(ItemType vertexLabel) const
+{
+   std::map<ItemType, int> neighbors;
+
+   if (vertices.find(vertexLabel) == vertices.end())
+      return neighbors;
+
+   auto vertex = vertices.at(vertexLabel);
+   vertex->resetNeighbor();
+
+   for (int index = 1; index <= vertex->getNumberOfNeighbors(); ++index)
+   {
+      ItemType neighborLabel = vertex->getNextNeighbor();
+      neighbors.insert({neighborLabel, vertex->getEdgeWeight(neighborLabel)});
+   }
+
+   return neighbors;
+} // end getNeighbors
+
 // Removes the undirected edge between start and end.
 // If either vertex becomes isolated after removal (no remaining neighbors),
 // it is deleted from the graph to preserve the connectivity invariant.
